@@ -363,3 +363,23 @@ button:hover {
     text-overflow: ellipsis;
   }
 }
+
+/* mobile player fixes */
+#app {
+  padding-bottom: 110px;
+}
+
+@media (max-width: 768px) {
+  .player {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    bottom: 10px;
+    width: min(92vw, 420px);
+  }
+
+  /* hide volume slider on phones */
+  #vol {
+    display: none;
+  }
+}
