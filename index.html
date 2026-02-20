@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>choose your chaos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="neon"></div>
+
+  <!-- music player -->
+  <div class="player" aria-label="music player">
+    <button id="playBtn" class="iconBtn" aria-label="play pause">▶</button>
+    <div class="track">
+      <div class="trackTitle">play the vibe</div>
+      <input id="vol" type="range" min="0" max="1" step="0.01" value="0.35" aria-label="volume">
+    </div>
+  </div>
+
+  <!-- app -->
+  <div id="app" class="card"></div>
+
+  <!-- put song.mp3 in the same folder -->
+  <audio id="bgm" src="song.mp3" loop></audio>
+
+
+<div id="modal" class="modal" aria-label="image modal">
+  <button class="modalClose" onclick="closeModal()">close ✕</button>
+  <img id="modalImg" class="modalContent" alt="zoomed image">
+</div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
