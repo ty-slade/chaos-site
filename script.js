@@ -6,19 +6,26 @@ const audio = document.getElementById("bgm");
 const playBtn = document.getElementById("playBtn");
 const vol = document.getElementById("vol");
 
+// mobile detection for volume control
+const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
 function initAudio() {
-  if (!audio || !playBtn || !vol) return;
+  if (!audio || !playBtn) return;
 
-  audio.volume = parseFloat(vol.value);
-
-  vol.addEventListener("input", () => {
+  // Only wire up volume control on desktop/tablet-like layouts.
+  // iOS Safari often ignores programmatic volume changes.
+  if (vol && !isMobile) {
     audio.volume = parseFloat(vol.value);
-  });
+
+    vol.addEventListener("input", () => {
+      audio.volume = parseFloat(vol.value);
+    });
+  }
 
   playBtn.addEventListener("click", async () => {
     try {
       if (audio.paused) {
-        await audio.play();          // iPhone requires a tap (this is the tap)
+        await audio.play(); // iPhone requires a tap
         playBtn.textContent = "⏸";
       } else {
         audio.pause();
@@ -192,7 +199,9 @@ function sceneResponsible() {
 }
 
 function finalScene(mode, line, emoji, name) {
-  const prefix = mode === "out" ? "Out path, the Scorpion energy we needed!" : "Chaos path";
+  const prefix = mode === "out"
+    ? "Out path, the Scorpion energy we needed!"
+    : "Chaos path";
 
   render(`
     ${topBar("Final")}
