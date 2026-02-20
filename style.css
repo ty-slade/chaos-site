@@ -326,3 +326,40 @@ button:hover {
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
+
+
+/* --- mobile player fixes --- */
+
+/* 1) give the app room so the fixed player never covers content */
+#app {
+  padding-bottom: 110px; /* space for the player on mobile */
+}
+
+/* 2) on phones, center the player and keep it slimmer */
+@media (max-width: 768px) {
+  .player {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    bottom: 10px;
+    width: min(92vw, 420px);
+  }
+
+  /* hide volume on mobile (iOS often ignores volume control anyway) */
+  #vol {
+    display: none;
+  }
+
+  /* tighten player layout a bit */
+  .track {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .trackTitle {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
